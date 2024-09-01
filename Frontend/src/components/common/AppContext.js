@@ -8,7 +8,7 @@ export const AppContext = createContext();
 const AppProvider = ({ children }) => {
   const [state, setState] = useState(() => {
     const storedUser = localStorage.getItem('userToken');
-    return storedUser ? JSON.parse(storedUser) : { user: null };
+    return storedUser ? JSON.parse(storedUser) : null;
   });
 
   const location = useLocation()
@@ -17,17 +17,13 @@ const AppProvider = ({ children }) => {
 
   return (
     <AppContext.Provider value={{ state, setState }}>
-      {!isAuthPage &&
-        <Header />
-      }
+      {!isAuthPage && <Header />}
       <div className="content">
         {children}
       </div>
-      {!isAuthPage &&
-      <Footer />
-      }
+      {!isAuthPage && <Footer />}
     </AppContext.Provider>
   );
 }
 
-export default AppProvider
+export default AppProvider;

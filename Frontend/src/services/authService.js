@@ -2,7 +2,7 @@ import axios from 'axios';
 
 const API_URL = 'http://localhost:8000/api';
 
-export const login = async (username, password) => {
+export const login = async (username, password, setState) => {
   try {
     const response = await axios.post(`${API_URL}/login/`, {
       username: username,
@@ -16,10 +16,18 @@ export const login = async (username, password) => {
     const userToken = response.data.token;
     const userData = response.data.user;
 
-    localStorage.setItem('userToken', JSON.stringify({ token: userToken, ...userData }))
+    if (userData && userToken) {
+      localStorage.setItem('userToken', JSON.stringify({ token: userToken, ...userData }));
+      console.log('User data stored:', { token: userToken, ...userData });
+
+      setState({ token: userToken, ...userData });
+    } else {
+      console.log('Failed to retrieve user data');
+    }
 
     return userData;
   } catch (error) {
+    console.error('Login error:', error);
     throw error.response.data;
   }
 };

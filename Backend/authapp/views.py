@@ -3,6 +3,7 @@ from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
+from rest_framework.authtoken.models import Token
 import json
 
 @csrf_exempt
@@ -31,7 +32,14 @@ def user_login(request):
     user = authenticate(request, username=username, password=password)
     if user is not None:
       login(request, user)
-      return JsonResponse({'sucess': 'Login successful'})
+      token, _ = Token.objects.get_or_create(user=user)
+      return JsonResponse({
+        'token': token.key,
+        'user': {
+          'username': user.username,
+          'email': user.email,
+        }
+      })
     else:
       return JsonResponse({'message': 'Invalid credentials'}, status=400)                       
 

@@ -6,18 +6,20 @@ import { AppContext } from '../common/AppContext';
 
 const UserProfileDropdown = () => {
   const { t } = useTranslation();
-  const { setState } = useContext(AppContext);
+  const { state, setState } = useContext(AppContext);
   const navigate = useNavigate();
 
   const handleSelect = (eventKey) => {
     if (eventKey === 'logout') {
-      setState({ user: null })
+      setState(null);
       localStorage.removeItem('userToken');
-      navigate('/auth')
+      navigate('/auth');
     } else {
       console.log(`${eventKey} selecionado`);
     }
   };
+
+  const userName = state ? state.username : 'Nome do Usuário';
 
   return (
     <DropdownButton
@@ -26,7 +28,7 @@ const UserProfileDropdown = () => {
       variant="secondary"
       onSelect={handleSelect}
     >
-      <Dropdown.Header>Nome do Usuário</Dropdown.Header>
+      <Dropdown.Header>{userName}</Dropdown.Header>
       <Dropdown.Item eventKey="profile">{t('common_profile')}</Dropdown.Item>
       <Dropdown.Item eventKey="settings">{t('common_settings')}</Dropdown.Item>
       <Dropdown.Divider />

@@ -1,13 +1,15 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Form, Button } from 'react-bootstrap';
 import { useTranslation } from 'react-i18next';
 import { login, register } from '../../services/authService';
+import { AppContext } from '../common/AppContext';
 
 const AuthPage = () => {
   const [isLogin, setIsLogin] = useState(true);
   const navigate = useNavigate();
-  const { t } = useTranslation()
+  const { t } = useTranslation();
+  const { setState } = useContext(AppContext);
 
   const [email, setEmail] = useState('');
   const [userName, setUserName] = useState('');
@@ -25,11 +27,10 @@ const AuthPage = () => {
   const handleLogin = async (e) => {
     e.preventDefault();
     try {
-      const response = await login(userName, password);
+      const response = await login(userName, password, setState);
       setSuccess('Login bem sucedido');
       navigate('/home');
       setError(null);
-      console.log(response);
     } catch (err) {
       setError(err.error || 'Erro ao fazer login');
       setSuccess(null);
@@ -42,12 +43,11 @@ const AuthPage = () => {
       const response = await register(userName, email, password);
       setSuccess('Registro bem sucedido');
       setError(null);
-      console.log(response);
     } catch (err) {
       setError(err.error || 'Erro ao fazer cadastro');
       setSuccess(null);
     }
-  }
+  };
 
   return (
     <div className={`body ${isLogin ? 'login-bg' : 'register-bg'}`}>
