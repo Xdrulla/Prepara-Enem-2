@@ -24,6 +24,9 @@
 	"new_password": "Nova senha",
 	"confirm_new_password": "Confirme a nova senha",
 	"change_password": "Alterar senha",
+	"subjects": "Matérias",
+	"modules": "Módulos",
+	"advance": "Avançado",
 
 	"nav_matematica": "Matemática",
 	"nav_fisica": "Fisíca",

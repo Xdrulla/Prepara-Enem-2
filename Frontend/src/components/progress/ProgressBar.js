@@ -3,7 +3,7 @@ import { ProgressBar as BootstrapProgressBar } from 'react-bootstrap';
 
 const ProgressBar = ({ progress }) => {
   return (
-    <div>
+    <div className="text-center">
       <BootstrapProgressBar now={progress} label={`${progress}%`} />
     </div>
   );

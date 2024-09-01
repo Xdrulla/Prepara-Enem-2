@@ -2,9 +2,12 @@ import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { getModules, updateProgress } from '../../services/progressService';
 import ProgressBar from './ProgressBar';
+import { useTranslation } from 'react-i18next';
+import { Container, Card, Button, Row, Col } from 'react-bootstrap';
 
 const ModuleList = () => {
   const { subjectId } = useParams();
+  const { t } = useTranslation();
   const [modules, setModules] = useState([]);
 
   useEffect(() => {
@@ -17,27 +20,34 @@ const ModuleList = () => {
 
   const handleProgressUpdate = async (moduleId, newProgress) => {
     await updateProgress(moduleId, newProgress);
-    // Recarregar os módulos para ver a atualização
     const data = await getModules(subjectId);
     setModules(data);
   };
 
   return (
-    <div>
-      <h2>Módulos</h2>
-      <ul>
+    <Container className="mt-5">
+      <h2 className="text-center mb-4">{t('modules')}</h2>
+      <Row className="justify-content-center">
         {modules.map(module => (
-          <li key={module.id}>
-            <h3>{module.title}</h3>
-            <p>{module.description}</p>
-            <ProgressBar progress={module.progress} />
-            <button onClick={() => handleProgressUpdate(module.id, module.progress + 10)}>
-              Avançar 10%
-            </button>
-          </li>
+          <Col md={6} key={module.id} className="mb-4">
+            <Card>
+              <Card.Body>
+                <Card.Title>{module.title}</Card.Title>
+                <Card.Text>{module.description}</Card.Text>
+                <ProgressBar progress={module.progress} />
+                <Button 
+                  variant="primary" 
+                  className="mt-3" 
+                  onClick={() => handleProgressUpdate(module.id, module.progress + 10)}
+                >
+                  {t('advance')} 10%
+                </Button>
+              </Card.Body>
+            </Card>
+          </Col>
         ))}
-      </ul>
-    </div>
+      </Row>
+    </Container>
   );
 };
 
