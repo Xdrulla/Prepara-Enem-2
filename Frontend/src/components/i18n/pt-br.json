@@ -1,0 +1,36 @@
+{
+	"common_register": "Cadastrar",
+	"common_email": "Email",
+	"common_password": "Senha",
+	"common_confirmPassword": "Confirme a senha",
+	"common_email_placeholder": "Digite o e-mail",
+	"common_password_placeholder": "Digite sua senha",
+	"common_confirmPassword_placeholder": "Confirme sua senha",
+	"common_login": "Entrar",
+	"common_noAccount": "Não tem uma conta?",
+	"common_AlreadyUser": "Já tem uma conta?",
+	"common_name": "Nome Completo",
+	"common_name_placeholder": "Digite seu nome completo",
+	"common_userName": "Nome de usuário",
+	"common_userName_placeholder": "Digite seu nome de usuário",
+	"common_userProfile": "Perfil do usuário",
+	"common_profile": "Perfil",
+	"common_settings": "Configurações",
+	"common_logout": "Sair",
+
+	"nav_matematica": "Matemática",
+	"nav_fisica": "Fisíca",
+	"nav_quimica": "Química",
+	"nav_biologia": "Biologia",
+	"nav_portugues": "Português",
+	"nav_redacao": "Redação",
+	"nav_historia": "História",
+	"nav_geografia": "Geografia",
+	"nav_simulado": "Simulados",
+
+	"app_name": "Prepara Enem",
+
+	"home_welcome": "Bem vindo ao Preapara Enem",
+	"home_intro": "O Prepara Enem é um aplicativo que tem como objetivo ajudar estudantes a se prepararem para o Exame Nacional do Ensino Médio (ENEM).",
+	"home_purpose": "O aplicativo oferece questões de múltipla escolha, simulados, dicas de estudo e muito mais."
+}

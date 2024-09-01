@@ -1,0 +1,23 @@
+.footer {
+  background-color: $color-primary;
+  color: white;
+  padding: $spacing-unit 0;
+
+  p {
+    margin: 0;
+  }
+
+  a {
+    color: white;
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  i {
+    font-size: 1.5rem;
+    margin-right: $spacing-unit;
+  }
+}

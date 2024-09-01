@@ -1,0 +1,51 @@
+@import 'variables';
+@import 'footer';
+@import 'authPage';
+
+html, body {
+  font-family: $font-family-base;
+  font-size: $font-size-base;
+  line-height: $line-height-base;
+  background-color: $color-primary-light;
+  color: $color-accent;
+  height: 100%;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+#root {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.navbar {
+  background-color: $color-primary;
+}
+
+.navbar-brand {
+  color: $color-secondary;
+}
+
+.button-primary {
+  background-color: $color-primary;
+  color: white;
+
+  &:hover {
+    background-color: $color-primary-light;
+  }
+}
+
+.content {
+  flex: 1;
+}
+
+footer {
+  background-color: $color-primary;
+  color: white;
+  text-align: center;
+  padding: 1rem;
+  width: 100%;
+  margin-top: auto;
+}
