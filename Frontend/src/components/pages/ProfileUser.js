@@ -14,6 +14,9 @@ const UserProfileDropdown = () => {
       setState(null);
       localStorage.removeItem('userToken');
       navigate('/auth');
+    }
+    else if (eventKey === 'profile') {
+      navigate('/profile-details');
     } else {
       console.log(`${eventKey} selecionado`);
     }
@@ -24,13 +27,13 @@ const UserProfileDropdown = () => {
   return (
     <DropdownButton
       id="dropdown-basic-button"
-      title={t('common_userProfile')}
+      title={t('common_profile')}
       variant="secondary"
       onSelect={handleSelect}
     >
       <Dropdown.Header>{userName}</Dropdown.Header>
       <Dropdown.Item eventKey="profile">{t('common_profile')}</Dropdown.Item>
-      <Dropdown.Item eventKey="settings">{t('common_settings')}</Dropdown.Item>
+      <Dropdown.Item eventKey="progress">{t('common_progress')}</Dropdown.Item>
       <Dropdown.Divider />
       <Dropdown.Item eventKey="logout">{t('common_logout')}</Dropdown.Item>
     </DropdownButton>
