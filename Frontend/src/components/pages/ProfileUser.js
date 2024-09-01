@@ -14,9 +14,10 @@ const UserProfileDropdown = () => {
       setState(null);
       localStorage.removeItem('userToken');
       navigate('/auth');
-    }
-    else if (eventKey === 'profile') {
+    } else if (eventKey === 'profile') {
       navigate('/profile-details');
+    } else if (eventKey === 'progress') {
+      navigate('/subjects');
     } else {
       console.log(`${eventKey} selecionado`);
     }
